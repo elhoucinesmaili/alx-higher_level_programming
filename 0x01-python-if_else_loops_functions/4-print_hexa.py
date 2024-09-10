@@ -1,11 +1,4 @@
 #!/usr/bin/python3
-import random
-
-number = random.randint(-10000, 10000)
-
-if number > 0:
-    print(f"{number} is positive")
-elif number == 0:
-    print(f"{number} is zero")
-else:
-    print(f"{number} is negative")
+"""Print numbers 0 to 98 in decimal and hexadecimal."""
+for number in range(0, 99):
+    print("{} = {}".format(number, hex(number)))
