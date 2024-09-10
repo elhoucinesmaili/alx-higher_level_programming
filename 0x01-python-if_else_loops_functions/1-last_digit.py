@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import random
 
 # Generate a random integer between -10000 and 10000
