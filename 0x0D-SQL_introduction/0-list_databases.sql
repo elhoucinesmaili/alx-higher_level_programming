@@ -1,2 +1,2 @@
 -- Lists all databases of MySQL server
-SHOW DATABASES;
+SELECT SCHEMA_NAME AS 'Database' FROM INFORMATION_SCHEMA.SCHEMATA;
