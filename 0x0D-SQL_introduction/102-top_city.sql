@@ -1,7 +1,10 @@
--- Select the top 3 cities with the highest average temperature in July and August
-SELECT city, AVG(temperature) AS avg_temp
-FROM temperatures
-WHERE MONTH(date) IN (7, 8)  -- July (7) and August (8)
+-- displays average temp by city for july and august in descending order
+CREATE TABLE IF NOT EXISTS temp_july_aug
+       SELECT *
+       FROM temperatures
+       WHERE month = 7 OR month = 8;
+SELECT city, AVG(value) AS avg_temp
+FROM temp_july_aug
 GROUP BY city
 ORDER BY avg_temp DESC
-LIMIT 3;
+limit 3;
