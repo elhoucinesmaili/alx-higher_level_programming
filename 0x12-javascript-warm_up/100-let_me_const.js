@@ -1,4 +1,4 @@
 #!/usr/bin/node
-// A file that modifies the value of myVar to 333
+// File that modifies the value of myVar to 333
 
-let myVar = 333;
+global.myVar = 333;
