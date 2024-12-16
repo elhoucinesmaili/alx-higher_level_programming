@@ -1,9 +1,9 @@
 #!/usr/bin/node
-// A script that prints a message depending on the number of arguments passed
+// Script that prints a message based on the number of arguments provided.
 
-const args = process.argv.slice(2);
+const argsCount = process.argv.slice(2).length;
 
-switch (args.length) {
+switch (argsCount) {
   case 0:
     console.log('No argument');
     break;
