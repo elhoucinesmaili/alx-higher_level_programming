@@ -1,5 +1,4 @@
 #!/usr/bin/node
-// function that returns the reversed version of a list
-exports.reverseList = function (list) {
-  return list.reduce((acc, curr) => [curr, ...acc], []);
+exports.esrever = function (list) {
+  return [...list].reverse();
 };
