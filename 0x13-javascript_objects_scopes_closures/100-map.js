@@ -1,6 +1,9 @@
 #!/usr/bin/node
-// A function that converts number from base 10 to another passed as argument
 
-exports.converter = function (base) {
-  return (num) => num.toString(base);
-};
+const { list } = require('./100-data');
+
+console.log(list);
+const newList = list.map(function (element, idx) {
+  return element * idx;
+});
+console.log(newList);
