@@ -2,9 +2,19 @@
 // A class Rectangle that defines a rectangle
 
 class Rectangle {
-  constructor (width, height) {
-    this.width = width || 1;  // Default to 1 if no valid width is provided
-    this.height = height || 1;  // Default to 1 if no valid height is provided
+  constructor (w, h) {
+    this.width = w;
+    this.height = h;
+  }
+
+  // Method to calculate the area of the rectangle
+  area() {
+    return this.width * this.height;
+  }
+
+  // Method to calculate the perimeter of the rectangle
+  perimeter() {
+    return 2 * (this.width + this.height);
   }
 }
 
