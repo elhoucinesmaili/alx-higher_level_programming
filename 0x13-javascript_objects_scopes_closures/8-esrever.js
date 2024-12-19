@@ -1,4 +1,9 @@
 #!/usr/bin/node
-exports.esrever = function (list) {
-  return [...list].reverse();
+// function that returns the reversed version of a list
+exports.reverseList = function (list) {
+  let newList = [];
+  list.forEach((element, index) => {
+    newList.unshift(element);
+  });
+  return newList;
 };
