@@ -1,9 +1,6 @@
 #!/usr/bin/node
-// function that returns the reversed version of a list
+// A function that returns the reversed version of a list using `reduce`
+
 exports.reverseList = function (list) {
-  let newList = [];
-  list.forEach((element, index) => {
-    newList.unshift(element);
-  });
-  return newList;
+  return list.reduce((acc, curr) => [curr, ...acc], []);
 };
