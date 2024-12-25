@@ -24,4 +24,5 @@ if __name__ == "__main__":
 
     # Display the states
     for state in states:
-        print(f"{state.id}: {state.name}"
+        print(f"{state.id}: {state.name}")
+
