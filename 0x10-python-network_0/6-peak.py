@@ -1,33 +1,28 @@
 #!/usr/bin/python3
+"""Function that finds a peak in a list of unsorted integers"""
 
 def find_peak(list_of_integers):
-    """Find a peak element in a list of unsorted integers."""
+    """Function that finds a peak in a list of unsorted integers"""
+
     if not list_of_integers:
         return None
 
-    def binary_search_peak(low, high):
-        if low == high:
-            return list_of_integers[low]
-        
+    # Binary search approach
+    low, high = 0, len(list_of_integers) - 1
+
+    while low <= high:
         mid = (low + high) // 2
 
-        # Check if the mid-element is a peak
-        if list_of_integers[mid] >= list_of_integers[mid - 1] and \
-           list_of_integers[mid] >= list_of_integers[mid + 1]:
+        # Check if mid is a peak
+        if (mid == 0 or list_of_integers[mid - 1] <= list_of_integers[mid]) and \
+           (mid == len(list_of_integers) - 1 or list_of_integers[mid + 1] <= list_of_integers[mid]):
             return list_of_integers[mid]
 
-        # Move to the left if the left neighbor is greater
+        # Move the search window
         if mid > 0 and list_of_integers[mid - 1] > list_of_integers[mid]:
-            return binary_search_peak(low, mid - 1)
+            high = mid - 1
         else:
-            # Move to the right otherwise
-            return binary_search_peak(mid + 1, high)
+            low = mid + 1
 
-    # Handle edge cases where the list has only one element or two elements
-    n = len(list_of_integers)
-    if n == 1:
-        return list_of_integers[0]
-    if n == 2:
-        return max(list_of_integers)
+    return None  # In case no peak is found, though the problem guarantees a peak
 
-    return binary_search_peak(0, len(list_of_integers) - 1)
