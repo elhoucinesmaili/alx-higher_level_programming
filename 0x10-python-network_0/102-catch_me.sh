@@ -1,5 +1,3 @@
 #!/bin/bash
-# Makes a request to 0.0.0.0:5000/catch_me that causes the server to respond with a message containing "You got me!"
-
-curl -o /dev/null -s -w "You got me!" 0.0.0.0:5000/catch_me
-
+# Bash script that makes reuest that causes the server to respond with message
+curl -s -L -X PUT -H "Origin: AlxSchool" -d "user_id=98" 0.0.0.0:5000/catch_me
