@@ -1,42 +1,21 @@
-const request = require('request');
+#!/usr/bin/node
+const request = require('request'); // Import the request module
+const url = 'https://swapi-api.hbtn.io/api/films/' + process.argv[2];
 
-if (process.argv.length !== 3) {
-  console.error('Usage: ./101-starwars_characters.js <Movie ID>');
-  process.exit(1);
-}
-
-const movieId = process.argv[2];
-const url = `https://swapi-api.alx-tools.com/api/films/${movieId}/`;
-
-request(url, (error, response, body) => {
-  if (error) {
-    console.error(error);
-    return;
+request(url, function (error, response, body) {
+  if (!error) {
+    const characters = JSON.parse(body).characters;
+    printCharacters(characters, 0);
   }
-
-  if (response.statusCode !== 200) {
-    console.error(`Error: Unable to fetch data (Status Code: ${response.statusCode})`);
-    return;
-  }
-
-  const filmData = JSON.parse(body);
-  const characterUrls = filmData.characters;
-
-  const fetchCharacter = (index) => {
-    if (index >= characterUrls.length) return;
-    request(characterUrls[index], (err, res, charBody) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      if (res.statusCode !== 200) {
-        console.error(`Error: Unable to fetch character (Status Code: ${res.statusCode})`);
-        return;
-      }
-      console.log(JSON.parse(charBody).name);
-      fetchCharacter(index + 1);
-    });
-  };
-
-  fetchCharacter(0);
 });
+
+function printCharacters (characters, index) {
+  request(characters[index], function (error, response, body) {
+    if (!error) {
+      console.log(JSON.parse(body).name);
+      if (index + 1 < characters.length) {
+        printCharacters(characters, index + 1);
+      }
+    }
+  });
+} // Fixed syntax issue by removing extraneous parenthesis
